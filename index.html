@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="VELOURA TECH — practical gaming PC guides, setup resources, and performance education.">
+  <title>VELOURA TECH — Tune Your Setup</title>
+  <style>
+    :root {
+      --bg: #080b12; --panel: #101725; --panel2: #0c1320; --line: #202d42;
+      --text: #f4f7fc; --muted: #9ba9bd; --blue: #43a5ff; --cyan: #70e0ff;
+      --green: #7ce6bd; --radius: 20px; --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(ellipse at 82% 5%, rgba(38,126,222,.18), transparent 34%),
+        radial-gradient(ellipse at 0% 40%, rgba(30,82,145,.13), transparent 30%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .topline { border-bottom: 1px solid rgba(255,255,255,.07); color: #a9c8e8; font-size: 12px; letter-spacing: .13em; text-align: center; padding: 9px 12px; text-transform: uppercase; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px); background: rgba(8,11,18,.82); border-bottom: 1px solid rgba(255,255,255,.07); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 900; letter-spacing: .09em; }
+    .mark { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid #3e9df4; border-radius: 11px; color: var(--cyan); background: linear-gradient(145deg, #173b63, #0b1422); box-shadow: 0 0 25px rgba(67,165,255,.18); font-size: 18px; }
+    .brand small { display: block; color: #7f91a9; font-size: 9px; letter-spacing: .24em; margin-top: -4px; }
+    .links { display: flex; align-items: center; gap: 27px; color: #bdc9d8; font-size: 13px; }
+    .links a:hover { color: white; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 18px; border-radius: 12px; border: 1px solid #398ee0; background: linear-gradient(135deg, #258be8, #1760b5); color: white; font-weight: 750; font-size: 13px; cursor: pointer; box-shadow: 0 8px 30px rgba(30,126,220,.2); transition: .2s transform, .2s filter; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.12); }
+    .btn.ghost { background: #111b2a; border-color: #2a3c55; box-shadow: none; color: #dbe8f8; }
+    .hero { padding: 90px 0 72px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
+    .eyebrow { color: var(--cyan); text-transform: uppercase; font-size: 11px; font-weight: 800; letter-spacing: .22em; display: flex; align-items: center; gap: 10px; }
+    .eyebrow:before { content: ""; width: 24px; height: 1px; background: var(--cyan); }
+    h1 { font-size: clamp(42px, 6vw, 70px); line-height: 1.02; letter-spacing: -.055em; margin: 18px 0; max-width: 700px; }
+    h1 span { background: linear-gradient(90deg, #fff 0%, #8acfff 58%, #438df1 100%); color: transparent; background-clip: text; }
+    .hero p { max-width: 560px; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 22px; }
+    .micro { font-size: 11px !important; color: #71839c !important; }
+    .visual { min-height: 390px; border: 1px solid #263b56; border-radius: 28px; background: linear-gradient(145deg, rgba(24,50,79,.75), rgba(10,17,28,.94)); position: relative; overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.07); }
+    .visual:before { content: ""; position: absolute; width: 310px; height: 310px; border-radius: 50%; background: #1688ee; filter: blur(90px); opacity: .18; right: -70px; top: -70px; }
+    .visual-grid { position: absolute; inset: 0; opacity: .16; background-image: linear-gradient(rgba(131,190,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(131,190,255,.18) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom, black, transparent); }
+    .pc { position: absolute; width: 210px; height: 285px; right: 16%; top: 52px; border: 2px solid #6aa9e5; border-radius: 24px; background: linear-gradient(130deg, #17283b, #080e18 70%); box-shadow: 0 0 45px rgba(54,154,255,.25), inset 0 0 25px rgba(72,162,255,.12); transform: perspective(800px) rotateY(-13deg) rotateX(3deg); }
+    .pc:before { content: ""; position: absolute; inset: 16px; border: 1px solid #314f70; border-radius: 16px; }
+    .fan { position: absolute; width: 78px; height: 78px; border-radius: 50%; border: 5px solid #285e8d; box-shadow: 0 0 18px #278fe7, inset 0 0 20px #2779c2; left: 50%; transform: translateX(-50%); }
+    .fan:after { content: ""; position: absolute; inset: 13px; border-radius: 50%; border: 2px dashed #7dd9ff; opacity: .8; }
+    .fan.one { top: 34px; } .fan.two { top: 125px; } .fan.three { top: 216px; }
+    .hud { position: absolute; left: 24px; bottom: 24px; width: 190px; border: 1px solid #34516f; border-radius: 14px; background: rgba(6,13,23,.86); padding: 14px; backdrop-filter: blur(10px); }
+    .hud small { color: #8ea9c5; font-size: 9px; letter-spacing: .16em; }
+    .hud strong { display: block; font-size: 20px; margin: 3px 0; }
+    .hud em { font-style: normal; color: var(--green); font-size: 10px; }
+    .section { padding: 66px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 26px; }
+    .section h2 { font-size: clamp(28px, 4vw, 42px); letter-spacing: -.04em; margin: 8px 0; }
+    .section-head p { max-width: 440px; color: var(--muted); margin: 0; font-size: 14px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--line); background: linear-gradient(160deg, rgba(20,31,48,.96), rgba(11,17,27,.96)); border-radius: var(--radius); padding: 22px; min-height: 260px; display: flex; flex-direction: column; transition: .2s; }
+    .card:hover { border-color: #3d83c2; transform: translateY(-3px); }
+    .product-icon { width: 46px; height: 46px; border: 1px solid #315b82; background: #12263d; border-radius: 13px; display: grid; place-items: center; font-size: 21px; margin-bottom: 22px; }
+    .tag { color: var(--cyan); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; }
+    .card h3 { margin: 7px 0; font-size: 19px; }
+    .card p { color: var(--muted); font-size: 13px; margin: 0 0 18px; }
+    .card-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .price { font-weight: 850; font-size: 18px; }
+    .soon { font-size: 10px; color: #a9bbd0; border: 1px solid #34465e; padding: 5px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: .08em; }
+    .features { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .feature { padding: 20px; border: 1px solid var(--line); background: rgba(14,22,34,.72); border-radius: 16px; }
+    .feature b { display: block; margin: 8px 0 4px; }
+    .feature p { color: var(--muted); font-size: 12px; margin: 0; }
+    .feature .symbol { color: var(--cyan); font-size: 20px; }
+    .banner { border: 1px solid #2a5278; border-radius: 24px; padding: 34px; background: radial-gradient(ellipse at 90% 20%, rgba(48,143,228,.22), transparent 40%), #0d1725; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+    .banner h2 { margin: 0 0 8px; font-size: 29px; }
+    .banner p { margin: 0; color: var(--muted); max-width: 580px; font-size: 13px; }
+    footer { margin-top: 70px; border-top: 1px solid rgba(255,255,255,.08); padding: 30px 0 40px; color: #7f91a8; font-size: 11px; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .notice { border: 1px solid #3b4c60; background: #111a27; border-radius: 12px; padding: 13px 15px; color: #9eafc3; font-size: 11px; margin-top: 18px; }
+    .modal-backdrop { display: none; position: fixed; inset: 0; z-index: 30; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); padding: 20px; place-items: center; }
+    .modal-backdrop.open { display: grid; }
+    .modal { max-width: 480px; width: 100%; border: 1px solid #365777; border-radius: 20px; padding: 25px; background: #0e1724; box-shadow: 0 30px 100px #000; }
+    .modal h3 { margin: 0 0 8px; font-size: 22px; }
+    .modal p { color: var(--muted); font-size: 13px; }
+    .modal .close { float: right; background: transparent; color: white; border: 0; font-size: 22px; cursor: pointer; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; padding-top: 58px; gap: 30px; }
+      .visual { min-height: 340px; }
+      .cards, .features { grid-template-columns: 1fr; }
+      .section-head, .banner { align-items: flex-start; flex-direction: column; }
+      .links { gap: 13px; font-size: 11px; }
+      .nav-cta { display: none; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .links a:nth-child(2) { display: none; }
+      .pc { right: 12%; transform: scale(.85) perspective(800px) rotateY(-13deg); transform-origin: top right; }
+      .hud { left: 14px; bottom: 14px; transform: scale(.9); transform-origin: bottom left; }
+      .visual { min-height: 315px; }
+      .banner { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">PC gaming resources • practical guides • smarter setups</div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="VELOURA TECH home">
+        <span class="mark">V</span><span>VELOURA <small>TECH / PERFORMANCE LAB</small></span>
+      </a>
+      <nav class="links" aria-label="Main navigation">
+        <a href="#products">Products</a><a href="#why">Our approach</a><a href="#about">About</a>
+      </nav>
+      <a class="btn nav-cta" href="#products">Explore resources <span>↗</span></a>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow">Built for the PC gaming community</div>
+        <h1>Make your setup work <span>smarter.</span></h1>
+        <p>Clear, practical PC gaming guides for players who want to understand their settings, keep their systems running smoothly, and get more from the hardware they already own.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#products">Explore digital resources <span>→</span></a>
+          <a class="btn ghost" href="#why">Why VELOURA?</a>
+        </div>
+        <p class="micro">Straightforward education. No miracle FPS promises. No risky one-click tweaks.</p>
+      </div>
+      <div class="visual" aria-label="Abstract gaming PC illustration">
+        <div class="visual-grid"></div>
+        <div class="pc"><i class="fan one"></i><i class="fan two"></i><i class="fan three"></i></div>
+        <div class="hud"><small>PERFORMANCE MINDSET</small><strong>Know your setup.</strong><em>Understand • Tune • Maintain</em></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="products">
+      <div class="section-head">
+        <div><div class="eyebrow">The resource library</div><h2>Tools for a better-informed setup.</h2></div>
+        <p>We're preparing a focused collection of downloadable guides and checklists. Each resource is designed to be useful, understandable, and easy to follow.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="product-icon">▤</div><div class="tag">Beginner guide</div>
+          <h3>The Gaming PC Handbook</h3>
+          <p>Learn the basics of Windows gaming settings, graphics options, startup apps, and common troubleshooting steps.</p>
+          <div class="card-foot"><span class="price">$9.99</span><span class="soon">Coming soon</span></div>
+        </article>
+        <article class="card">
+          <div class="product-icon">✓</div><div class="tag">Quick reference</div>
+          <h3>PC Performance Checklist</h3>
+          <p>A simple, repeatable checklist for maintenance, driver awareness, monitoring, and diagnosing common issues.</p>
+          <div class="card-foot"><span class="price">$4.99</span><span class="soon">Coming soon</span></div>
+        </article>
+        <article class="card">
+          <div class="product-icon">⌘</div><div class="tag">Value bundle</div>
+          <h3>Ultimate Gaming Setup Bundle</h3>
+          <p>A combined toolkit with the handbook, checklist, setup planner, and maintenance tracker in one package.</p>
+          <div class="card-foot"><span class="price">$24.99</span><span class="soon">Coming soon</span></div>
+        </article>
+      </div>
+      <div class="notice">Pre-launch storefront: products are concepts in development and are not currently available for purchase. Prices are proposed and may change.</div>
+    </section>
+
+    <section class="wrap section" id="why">
+      <div class="section-head">
+        <div><div class="eyebrow">The VELOURA standard</div><h2>Useful beats overhyped.</h2></div>
+        <p>We focus on helping gamers make informed changes—not promising impossible results or recommending risky system modifications.</p>
+      </div>
+      <div class="features">
+        <div class="feature"><div class="symbol">◎</div><b>Understand the why</b><p>Guides explain what a setting does and when it may matter.</p></div>
+        <div class="feature"><div class="symbol">⌁</div><b>Practical steps</b><p>Clear instructions, sensible checks, and reversible changes wherever possible.</p></div>
+        <div class="feature"><div class="symbol">◇</div><b>Honest expectations</b><p>Performance depends on hardware, software, game updates, and individual settings.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="about">
+      <div class="banner">
+        <div><div class="eyebrow">VELOURA TECH / performance lab</div><h2>Build knowledge. Tune with confidence.</h2><p>We're building a resource hub for PC gamers who want clear explanations and practical tools to get familiar with their systems.</p></div>
+        <button class="btn" id="previewBtn">View launch info <span>↗</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div><strong style="color:#dce9f8;letter-spacing:.12em">VELOURA TECH</strong><br>Gaming performance, made understandable.</div>
+        <div>© <span id="year"></span> VELOURA TECH. All rights reserved.</div>
+      </div>
+      <div class="notice">VELOURA TECH is an independent educational concept and is not affiliated with Epic Games, Microsoft, NVIDIA, AMD, Intel, or any game publisher. No specific FPS increase or performance result is guaranteed.</div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="close" id="closeModal" aria-label="Close">×</button>
+      <div class="eyebrow">Launch status</div>
+      <h3 id="modalTitle">We're getting the library ready.</h3>
+      <p>VELOURA TECH is currently in pre-launch. The guides and digital downloads are being developed and reviewed. No payment is being collected on this preview site.</p>
+      <button class="btn" id="modalDone">Got it</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const modal = document.getElementById('modal');
+    const open = () => modal.classList.add('open');
+    const close = () => modal.classList.remove('open');
+    document.getElementById('previewBtn').addEventListener('click', open);
+    document.getElementById('closeModal').addEventListener('click', close);
+    document.getElementById('modalDone').addEventListener('click', close);
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  </script>
+</body>
+</html>
